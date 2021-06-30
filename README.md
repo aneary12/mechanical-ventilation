@@ -3,12 +3,12 @@
 ## Files:
 - *0_patient_selection.ipynb* - generates a list of ICU patients that meet certain criteria.
 - *1_re_intubation.ipynb* - calculates times between subsequent episodes of ventilation and selects patients that meet certain criteria.
-- *2_dataset_prep.ipynb* - applies outcome criteria to patients generated in *re_intubation.ipynb* and selects a final set of patients with associated binary classification.
+- *2_dataset_prep.ipynb* - applies outcome criteria to patients generated in *1_re_intubation.ipynb* and selects a final set of patients with associated binary classification.
 - *3_static_features.ipynb* - queries MIMIC for static features.
 - *4_general_features.ipynb* - queries MIMIC for general dynamic features.
 - *5_ventilator_features.ipynb* - queries MIMIC for ventilator-specific features.
-- *6_time_series_generator.ipynb* - processes raw data generated in *general_features.ipynb* and *ventilator_features.ipynb* to give hourly time series.
-- *7_pre_processing.ipynb* - combines data from *static_features.ipynb* and *time_series_generator.ipynb*, splits into training, validation and test sets, and performs Z-score normalisation.
+- *6_time_series_generator.ipynb* - processes raw data generated in *4_general_features.ipynb* and *5_ventilator_features.ipynb* to give hourly time series.
+- *7_pre_processing.ipynb* - combines data from *3_static_features.ipynb* and *6_time_series_generator.ipynb*, splits into training, validation and test sets, and performs Z-score normalisation.
 - *8_models.ipynb* - training and testing of logistic regression and RNN models, and comparison to clinical indicators.
 
 ## Folders:
