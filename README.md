@@ -1,23 +1,16 @@
-# mechanical-ventilation
+# Mechanical Ventilation
 
-## Files:
-- *0_patient_selection.ipynb* - generates a list of ICU patients that meet certain criteria.
-- *1_re_intubation.ipynb* - calculates times between subsequent episodes of ventilation and selects patients that meet certain criteria.
-- *2_dataset_prep.ipynb* - applies outcome criteria to patients generated in *1_re_intubation.ipynb* and selects a final set of patients with associated binary classification.
-- *3_static_features.ipynb* - queries MIMIC for static features.
-- *4_general_features.ipynb* - queries MIMIC for general dynamic features.
-- *5_ventilator_features.ipynb* - queries MIMIC for ventilator-specific features.
-- *6_time_series_generator.ipynb* - processes raw data generated in *4_general_features.ipynb* and *5_ventilator_features.ipynb* to give hourly time series.
-- *7_pre_processing.ipynb* - combines data from *3_static_features.ipynb* and *6_time_series_generator.ipynb*, splits into training, validation and test sets, and performs Z-score normalisation.
-- *8_models.ipynb* - training and testing of logistic regression and RNN models, and comparison to clinical indicators.
+The purpose of this work was to build a model to predict extubation failure. Extubation failure happens when a patient is re-intubated less than 72 hours after extubation (depending on definition), and is associated with higher morbidity and mortality. The intent was to use time series data from the 24 hours preceding extubation to predict the patient outcome.
 
-## Folders:
-- *data* - contains db_details.npy (the login details for my local database), as well as being the folder where outputs of the notebooks are stored
-- *plots* - folder where all plots generated in these notebooks are stored.
-- *queries* - contains PostgreSQL queries used to access data in MIMIC-III.
-- *Unused Notebooks* - a collection of notebooks that aren't used for this project but that I don't want to get rid of just yet in case the code turns out to be useful.
+The data being used here is taken from the MIMIC-III database, an open source, anonymised database containing patient data collected in the ICU.
 
-## Not included in this repository:
-- These notebooks require the MIMIC-III database (https://mimic.physionet.org/) to be locally installed.
-- Outputs of these notebooks are stored in *data*, however they haven't been uploaded here because of storage constraints.
-- Plots generated in these notebooks are stored in *plots*, however they haven't been uploaded here.
+Below is an overview of what is contained in each notebook:
+- **0_patient_selection.ipynb** - explained in the notebook.
+- **1_re_intubation.ipynb** - explained in the notebook.
+- **2_dataset_prep.ipynb** - defines weaning success and failure, and selects patients who meet those criteria only.
+- **3_static_features.ipynb** - queries MIMIC-III for static features.
+- **4_general_features.ipynb** - queries MIMIC-III for general dynamic features.
+- **5_ventilator_features.ipynb** - queries MIMIC-III for ventilator-specific features.
+- **6_time_series_generator.ipynb** - converts the raw data into 24-interval time series.
+- **7_pre_processing.ipynb** - prepares the data for model training and testing, including data split and standardisation.
+- **8_models.ipynb** - implements different models to predict extubation failure.
